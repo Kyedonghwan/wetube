@@ -10,6 +10,7 @@ import routes from "./routes";
 
 const app = express();
 
+app.set("view engine", "pug"); // view engine이 보여질 확장자가 pug임을 명시.
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
