@@ -1,0 +1,11 @@
+1. npm install morgan (무슨일이 일어났는지 기록)
+
+2. app.use(morgan("tiny 혹은 combined")); 브라우저 접속시 무슨 브라우저, 어디 라우팅으로 접속했는지 볼 수 있음.
+
+dev가 color가 있어 제일 나음.(혹은 helmet ex. app.use(helmet();)
+
+3. npm install body-parser (form에 담겨있는 정보들을 가져오기위해 request object로 접근가능 하게 하는것)
+
+4. npm install cookie-parser ( user의 정보를 cookie에 담기 위해 )
+
+5. export default app ( app 관련 전체 코드를 내보냄) vs export userRouter ( router자체만 내보냄 )
