@@ -8,4 +8,15 @@ dev가 color가 있어 제일 나음.(혹은 helmet ex. app.use(helmet();)
 
 4. npm install cookie-parser ( user의 정보를 cookie에 담기 위해 )
 
-5. export default app ( app 관련 전체 코드를 내보냄) vs export userRouter ( router자체만 내보냄 )
+5. export default app ( app 관련 전체 코드-파일로 를 내보냄) vs export userRouter ( router자체만 내보냄 ) app.use("user", userRouter);
+
+6.  Model (data)
+    View ( How does the data look)
+    Control ( function that looks for the data )
+So, Model is " database" at a server, View is "what we see" at a browser, and Controller is "handling data request from browser and data response from database"
+
+7. url에 :입력하면 변하는 값임을  감지.
+
+8. Pug.js V를 위해 사용됨.(HTML이 fuckong cool되게)
+
+(** Router 사용시 get이 아니라 use를 쓰는이유 : router 역시도 미들웨어 이기 때문이다. router들을 쉽게 관리하기 위해 **)
