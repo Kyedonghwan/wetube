@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { MongooseDocument } from "mongoose";
 
 const VideoSchema = new mongoose.Schema({
   fileUrl: {
@@ -24,6 +24,10 @@ const VideoSchema = new mongoose.Schema({
       ref: "Comment",
     },
   ],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const model = mongoose.model("Video", VideoSchema);
