@@ -12,6 +12,7 @@ import globalRouter from "./routers/globalRouter";
 import session from "express-session";
 import routes from "./routes";
 import { localsMiddleWare } from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 
 import "./passport";
 
@@ -43,5 +44,6 @@ app.use(localsMiddleWare);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
