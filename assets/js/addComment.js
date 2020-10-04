@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
@@ -7,11 +8,14 @@ const increaseNumber = () => {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
 };
 
-const addComment = (comment) => {
+const addComment = async (comment) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
+  const delBtn = document.createElement("button");
   li.appendChild(span);
+  li.appendChild(delBtn);
   span.innerHTML = comment;
+  delBtn.innerHTML = "❌";
   commentList.prepend(li);
   increaseNumber();
 };
@@ -25,6 +29,7 @@ const sendComment = async (comment) => {
       comment,
     },
   });
+
   if (response.status === 200) {
     addComment(comment);
   }

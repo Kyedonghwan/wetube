@@ -103,13 +103,18 @@ export const deleteVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    if (video.creator !== req.user._id) {
-      throw Error();
-    } else {
+    if (video.creator == req.user._id) {
       await Video.findOneAndRemove({ _id: id });
+      const user = await User.findOne({ _id: req.user._id });
+      user.videos.pull(id);
+      user.save();
+    } else {
+      throw Error();
     }
-  } catch (error) {}
-  res.redirect(routes.home);
+  } catch (error) {
+  } finally {
+    res.redirect(routes.home);
+  }
 };
 
 //Register Video View
@@ -144,6 +149,9 @@ export const postAddComment = async (req, res) => {
       text: comment,
       creator: req.user._id,
     });
+    const user = await User.findById(newComment.creator);
+    user.comments.push(newComment._id);
+    user.save();
     video.comments.push(newComment._id);
     video.save();
   } catch (error) {
@@ -152,3 +160,5 @@ export const postAddComment = async (req, res) => {
     res.end();
   }
 };
+
+export const postDeleteComment = async (req, res) => {};
