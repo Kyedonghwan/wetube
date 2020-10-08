@@ -20,7 +20,7 @@ const app = express();
 
 const CookieStore = MongoStore(session);
 
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.set("view engine", "pug"); // view engine이 보여질 확장자가 pug임을 명시.
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));

@@ -132,7 +132,7 @@ export const postEditProfile = async (req, res) => {
       {
         name,
         email,
-        avatarUrl: file ? file.path : req.user.avatarUrl,
+        avatarUrl: file ? file.location : req.user.avatarUrl,
       }
     );
     res.redirect(routes.me);

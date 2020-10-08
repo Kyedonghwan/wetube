@@ -1,8 +1,31 @@
 import routes from "./routes";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
 import multer from "multer";
 
-const multerVideo = multer({ dest: "uploads/videos/" });
-const multerAvatar = multer({ dest: "uploads/avatars/" });
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.AWS_PRIVATE_KEY,
+  region: "ap-northeast-1",
+});
+
+const multerVideo = multer({
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: "wetube-kdh/video",
+  }),
+});
+const multerAvatar = multer({
+  storage: multerS3({
+    s3,
+    acl: "publci-read",
+    bucket: "wetube-kdh/avatar",
+  }),
+});
+
+export const uploadVideo = multerVideo.single("videoFile");
+export const uploadAvatar = multerAvatar.single("avatar");
 
 export const localsMiddleWare = (req, res, next) => {
   res.locals.siteName = "WeTube";
@@ -27,6 +50,3 @@ export const onlyPrivate = (req, res, next) => {
     res.redirect(routes.home);
   }
 };
-
-export const uploadVideo = multerVideo.single("videoFile");
-export const uploadAvatar = multerAvatar.single("avatar");
