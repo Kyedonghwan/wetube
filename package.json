@@ -12,12 +12,14 @@
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "prebuild": "rm -rf build",
-    "start": "node build/init.js",
+    "start": "PRODUCTION=TRUE node build/init.js",
     "prestart": "npm run build"
   },
   "author": "Kyedonghwan",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
@@ -54,8 +56,6 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "mini-css-extract-plugin": "^0.11.2",
