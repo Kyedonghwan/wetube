@@ -4,3 +4,4 @@ memo/
 .env
 uploads/
 static
+build
