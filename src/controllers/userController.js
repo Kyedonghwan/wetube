@@ -73,7 +73,7 @@ export const postGithubLogin = (req, res) => {
 
 export const facebookLogin = passport.authenticate("facebook", {
   successFlash: "Welcome",
-  failureFlash: "Cant't log in at this time "
+  failureFlash: "Cant't log in at this time! "
 });
 
 export const facebookLoginCallback = async (_, __, profile, cb) => {
